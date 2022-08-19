@@ -12,7 +12,7 @@ import org.thymeleaf.templatemode.TemplateMode;
  * This class is as Spring Boot @Configuration class and is used to provide
  * or inject configuration values into the rest of the application.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Configuration

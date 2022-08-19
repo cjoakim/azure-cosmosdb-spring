@@ -13,7 +13,7 @@ import org.springframework.data.annotation.Version;
 /**
  * This is superclass of classes Author, Library, and Maintainer.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 @Data
 @NoArgsConstructor

@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  * Instances of this class represent the several fields of the Graph HTML FORM
  * that are HTTP POSTed to the GraphController.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Data

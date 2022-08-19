@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * See class TripleRepositoryExtensionsImpl in this package, which implements this interface.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 public interface TripleRepositoryExtensions {
     public Iterable<Triple> findByTenantAndLobAndSubjectLabelsIn(String tenant, String lob, ArrayList<String> values);

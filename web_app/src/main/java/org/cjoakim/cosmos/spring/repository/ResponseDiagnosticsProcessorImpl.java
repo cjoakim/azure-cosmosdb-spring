@@ -7,6 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 
+/**
+ *
+ * Chris Joakim, Microsoft, August 2022
+ */
+
 @Slf4j
 public class ResponseDiagnosticsProcessorImpl implements ResponseDiagnosticsProcessor {
 

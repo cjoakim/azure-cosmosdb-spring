@@ -19,7 +19,7 @@ import java.util.Iterator;
  * of CosmosDB Spring Data Repository functionality within the (batch)
  * DataCommandLineApp,
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Component

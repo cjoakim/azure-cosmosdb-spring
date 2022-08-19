@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Instances of this class represent a NPM (Node.js Package Manager) library Author.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Data

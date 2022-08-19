@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Instances of this class represent a NPM (Node.js Package Manager) Library.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Data

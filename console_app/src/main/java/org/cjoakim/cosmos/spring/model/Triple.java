@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * and navigation of the graph.  The size of the Triple object is designed to be as small
  * as possible to enable fast and efficient in-memory processing.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Data

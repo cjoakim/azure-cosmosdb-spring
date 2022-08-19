@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * of Data Access Object (CosmosDB Java SDK) functionality within the
  * (batch) DataCommandLineApp,
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Component

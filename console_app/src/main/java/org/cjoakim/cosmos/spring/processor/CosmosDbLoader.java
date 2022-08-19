@@ -26,7 +26,7 @@ import java.util.List;
  * An instance of this class is created and executed from the DataCommandLineApp
  * main class to load CosmosDB from the previously transformed data.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Component

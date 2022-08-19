@@ -10,6 +10,11 @@ import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
 import java.io.*;
 import java.text.DecimalFormat;
 
+/**
+ *
+ * Chris Joakim, Microsoft, August 2022
+ */
+
 @Slf4j
 @Data
 public class EpaOzoneDataProcessor extends ConsoleAppProcessor implements AppConstants {

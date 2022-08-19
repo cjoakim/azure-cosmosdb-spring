@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * This class is a Spring Boot @Configuration class that also provides configuration
  * values for the Spring Data CosmosDB repositories.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @Configuration

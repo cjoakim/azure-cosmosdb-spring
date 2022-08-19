@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContext;
  * This is the entry=point for this Spring Boot application.
  * It is a "console app" due to the CommandLineRunner interface.
  *
- * Chris Joakim, Microsoft, July 2022
+ * Chris Joakim, Microsoft, August 2022
  */
 
 @SpringBootApplication
