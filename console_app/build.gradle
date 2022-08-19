@@ -24,9 +24,14 @@ ext {
 
 dependencies {
     implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+
     compileOnly 'org.projectlombok:lombok'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -38,4 +43,10 @@ dependencyManagement {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+task transformEpaOzoneData(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.spring.App'
+    args 'transform_epa_ozone_data', '--verbose'
 }

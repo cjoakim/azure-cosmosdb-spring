@@ -7,7 +7,7 @@ package org.cjoakim.cosmos.spring.processor;
  * Chris Joakim, Microsoft, July 2022
  */
 
-public interface ConsoleAppProcess {
+public interface ConsoleAppProcessor {
 
     public void process() throws Exception;
 }

@@ -31,7 +31,7 @@ import java.util.*;
  */
 
 @Slf4j
-public class RawDataTransformer implements ConsoleAppProcess, AppConstants {
+public class RawDataTransformer implements ConsoleAppProcessor, AppConstants {
 
     // Instance variables:
     private List<Library> rawLibrariesList = null;

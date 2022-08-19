@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.dao.CosmosDAO;
-import org.cjoakim.cosmos.spring.io.FileUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 @Slf4j
-public class DaoQueryProcessor implements ConsoleAppProcess, AppConstants {
+public class DaoQueryProcessor implements ConsoleAppProcessor, AppConstants {
 
     @Value("${spring.cloud.azure.cosmos.endpoint}")
     public String uri;
