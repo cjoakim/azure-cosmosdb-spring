@@ -1,0 +1,44 @@
+<project name="backup" default="copySource" basedir=".">
+
+    <description>
+        Apache Ant script to copy the source code from the console_app to the web_app,
+        but exclude some files such as the Spring CommandLineRunner class and the
+        batch Processor classes.
+
+        The approach I used in this Spring application was to first develop data functionality
+        in the "data_app" and the Spring CommandLineRunner class DataCommandLineApp (a console app).
+        Once working, package "org.cjoakim.cosmos.altgraph.data" is copied to the "web_app"
+        using this Ant script.
+
+        Usage: ant -f copy_source.xml
+
+        Chris Joakim, Microsoft August 2022
+    </description>
+
+    <property name="console_app_dir" value="console_app/src/main/java/org/cjoakim/cosmos/spring/" />
+    <property name="web_app_dir"     value="web_app/src/main/java/org/cjoakim/cosmos/spring/" />
+
+    <!-- ******************************************************************* -->
+
+    <target name="echoProperties">
+
+        <echo message="Properties used in this script:" />
+        <echo message="console_app_dir: ${console_app_dir}" />
+        <echo message="web_app_dir:     ${web_app_dir}" />
+    </target>
+
+    <!-- ******************************************************************* -->
+
+    <target name="copySource" depends="echoProperties" >
+
+        <copy todir="${web_app_dir}">
+            <fileset dir="${console_app_dir}">
+                <exclude name="**/App.java"/>
+                <exclude name="**/processor/*.java"/>
+            </fileset>
+        </copy>
+
+        <echo message="done" />
+    </target>
+
+</project>
