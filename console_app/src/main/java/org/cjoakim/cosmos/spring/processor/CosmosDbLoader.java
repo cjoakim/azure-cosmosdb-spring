@@ -32,7 +32,7 @@ import java.util.List;
 @Component
 @NoArgsConstructor
 @Slf4j
-public class CosmosDbLoader implements ConsoleAppProcessor, AppConstants {
+public class CosmosDbLoader extends ConsoleAppProcessor implements AppConstants {
     @Autowired
     private AuthorRepository authorRepository = null;
     @Autowired

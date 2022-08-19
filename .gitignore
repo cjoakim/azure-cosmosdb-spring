@@ -1,4 +1,4 @@
-## cj
+## cj manual entries
 
 gradle/
 gradlew
@@ -24,9 +24,11 @@ gradlew.bat
 **/target/
 **/tmp/
 
-console_app/data/epa/8hour_44201_2021/
+console_app/data/epa/8hour_44201_2021/8hour_44201_2021.csv
+console_app/data/epa/8hour_44201_2021/*.json
 
-## generated 
+
+## Spring Initializr generated entries below
 
 .gradle
 /build/

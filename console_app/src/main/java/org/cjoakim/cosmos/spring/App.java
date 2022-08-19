@@ -36,18 +36,21 @@ public class App implements CommandLineRunner, AppConstants {
         log.warn("run method...");
         AppConfiguration.setCommandLineArgs(args);
         String processType = args[0];
-        ConsoleAppProcessor processor = null;
         log.warn("run, processType: " + processType);
 
         try {
             switch (processType) {
                 case "transform_epa_ozone_data":
-                    processor = new EpaOzoneDataProcessor();
-                    processor.process();
+                    EpaOzoneDataProcessor epaOzoneDataProcessor = new EpaOzoneDataProcessor();
+                    epaOzoneDataProcessor.setSkipCount(Long.parseLong(args[1]));
+                    epaOzoneDataProcessor.setMaxRecords(Long.parseLong(args[2]));
+                    epaOzoneDataProcessor.setPartitionKeyStrategy(args[3]);
+                    epaOzoneDataProcessor.process();
                     break;
                 case "transform_raw_data":
-                    processor = new RawDataTransformer();
-                    processor.process();
+                    RawDataTransformer rawDataTransformer = new RawDataTransformer();
+                    //rawDataTransformer.set
+                    rawDataTransformer.process();
                     break;
                 case "load_cosmos":
                     cosmosDbLoader.process();

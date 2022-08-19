@@ -24,7 +24,7 @@ import java.util.Iterator;
 
 @Component
 @Slf4j
-public class RepoQueryProcessor implements ConsoleAppProcessor, AppConstants {
+public class RepoQueryProcessor extends ConsoleAppProcessor implements AppConstants {
 
     private AuthorRepository authorRepository = null;
 

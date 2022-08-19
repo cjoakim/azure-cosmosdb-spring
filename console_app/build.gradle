@@ -48,5 +48,5 @@ tasks.named('test') {
 task transformEpaOzoneData(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.spring.App'
-    args 'transform_epa_ozone_data', '--verbose'
+    args 'transform_epa_ozone_data', '0', '10000', 'gmtDateTime', '--verbose'
 }

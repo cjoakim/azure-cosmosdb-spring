@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 @Slf4j
-public class DaoQueryProcessor implements ConsoleAppProcessor, AppConstants {
+public class DaoQueryProcessor extends ConsoleAppProcessor implements AppConstants {
 
     @Value("${spring.cloud.azure.cosmos.endpoint}")
     public String uri;
