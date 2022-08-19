@@ -1,3 +1,31 @@
+## cj
+
+gradle/
+gradlew
+gradlew.bat
+
+**/*.class
+**/*.gz 
+**/*.iml
+**/*.swp
+**/*.tsv 
+**/*.zip
+
+**/.DS_Store
+**/.classpath
+**/.factorypath
+**/.gradle/
+**/.idea/
+**/.vs/
+**/.vscode
+**/bin/
+**/build/
+**/cache/
+**/target/
+**/tmp/
+
+## generated 
+
 .gradle
 /build/
 
