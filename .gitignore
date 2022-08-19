@@ -24,6 +24,8 @@ gradlew.bat
 **/target/
 **/tmp/
 
+console_app/data/epa/8hour_44201_2021/
+
 ## generated 
 
 .gradle
