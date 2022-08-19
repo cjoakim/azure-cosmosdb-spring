@@ -1,5 +1,6 @@
 package org.cjoakim.cosmos.spring.model;
 
+import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,9 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Container(containerName="telemetry")
 public class EpaOzoneTelemetryEvent {
 
-    private String pk;
+    private String id;  // CosmosDB document ID
+    private String pk;  // CosmosDB partition key
+
     private String stateCode;
     private String countyCode;
     private String siteNum;
@@ -27,6 +31,9 @@ public class EpaOzoneTelemetryEvent {
     private int    observationCount;
     private int    nullObservations;
     private double meanObservation;
+
+    private String _etag;  // CosmosDB document version hash for OCC
+    private long   _ts;    // CosmosDB document timestamp
 
     public String asJson(boolean pretty) throws Exception {
 
