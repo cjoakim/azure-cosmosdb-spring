@@ -15,8 +15,13 @@
         Chris Joakim, Microsoft August 2022
     </description>
 
+    <!--
     <property name="console_app_dir" value="console_app/src/main/java/org/cjoakim/cosmos/spring/" />
     <property name="web_app_dir"     value="web_app/src/main/java/org/cjoakim/cosmos/spring/" />
+    -->
+
+    <property name="console_app_dir" value="console_app/src/main/" />
+    <property name="web_app_dir"     value="web_app/src/main/" />
 
     <!-- ******************************************************************* -->
 
