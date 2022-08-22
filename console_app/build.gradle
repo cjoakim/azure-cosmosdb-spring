@@ -45,8 +45,8 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-task transformEpaOzoneData(type: JavaExec) {
+task transformRawEpaOzoneData(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.spring.App'
-    args 'transform_epa_ozone_data', '0', '50000', 'gmtDateTime', '--verbose'
+    args 'transform_raw_epa_ozone_data', '0', '5000', 'latLng', '--verbose'
 }

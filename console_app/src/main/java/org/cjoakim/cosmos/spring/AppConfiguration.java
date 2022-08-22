@@ -124,20 +124,6 @@ public class AppConfiguration extends AbstractCosmosConfiguration implements App
         return flagArg(LOB_FLAG, LOB_NPM_LIBRARIES);
     }
 
-    @Value("${app.cache.method}")
-    public String cacheMethod;
-
-    public static String getCacheMethod() {
-        return singleton.cacheMethod;
-    }
-
-    public static boolean cacheUsingRedis() {
-        if (singleton.cacheMethod == null) {
-            return false;
-        }
-        return singleton.cacheMethod.trim().equalsIgnoreCase(CACHE_WITH_REDIS);
-    }
-
     // CosmosDB Spring Data Config below:
     // See https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb
 

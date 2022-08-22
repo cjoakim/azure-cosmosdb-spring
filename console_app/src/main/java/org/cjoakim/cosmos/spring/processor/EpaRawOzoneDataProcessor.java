@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 
 @Slf4j
 @Data
-public class EpaOzoneDataProcessor extends ConsoleAppProcessor implements AppConstants {
+public class EpaRawOzoneDataProcessor extends ConsoleAppProcessor implements AppConstants {
 
     private long skipCount  = 0;
     private long outputDocCount = 0;

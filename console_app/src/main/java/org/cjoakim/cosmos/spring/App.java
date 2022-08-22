@@ -21,7 +21,7 @@ import org.springframework.context.ApplicationContext;
 public class App implements CommandLineRunner, AppConstants {
 
     @Autowired private ApplicationContext applicationContext;
-    @Autowired private TripleRepository tripleRepository;
+    //@Autowired private TripleRepository tripleRepository;
     @Autowired private CosmosDbLoader cosmosDbLoader;
     @Autowired private RepoQueryProcessor repoQueryProcessor;
     @Autowired private DaoQueryProcessor daoQueryProcessor;
@@ -40,17 +40,12 @@ public class App implements CommandLineRunner, AppConstants {
 
         try {
             switch (processType) {
-                case "transform_epa_ozone_data":
-                    EpaOzoneDataProcessor epaOzoneDataProcessor = new EpaOzoneDataProcessor();
+                case "transform_raw_epa_ozone_data":
+                    EpaRawOzoneDataProcessor epaOzoneDataProcessor = new EpaRawOzoneDataProcessor();
                     epaOzoneDataProcessor.setSkipCount(Long.parseLong(args[1]));
                     epaOzoneDataProcessor.setMaxRecords(Long.parseLong(args[2]));
                     epaOzoneDataProcessor.setPartitionKeyStrategy(args[3]);
                     epaOzoneDataProcessor.process();
-                    break;
-                case "transform_raw_data":
-                    RawDataTransformer rawDataTransformer = new RawDataTransformer();
-                    //rawDataTransformer.set
-                    rawDataTransformer.process();
                     break;
                 case "load_cosmos":
                     cosmosDbLoader.process();
