@@ -2,10 +2,11 @@
 
 Sample **Spring Boot** console and web applications with the **Azure CosmosDB SQL API**, **Asynch SDK**, and **Spring Data**
 
-
 <p align="center">
     <img src="doc/img/azure-cosmosdb-spring-logo.png" width="95%">
 </p>
+
+## Chris Joakim, Microsoft, CosmosDB Global Black Belt (GBB)
 
 ---
 
