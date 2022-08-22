@@ -1,6 +1,11 @@
 # azure-cosmosdb-spring
 
-Sample Spring Boot console and web applications with the CosmosDB SQL API, Asynch SDK, and Spring Data
+Sample **Spring Boot** console and web applications with the **Azure CosmosDB SQL API**, **Asynch SDK**, and **Spring Data**
+
+
+<p align="center">
+    <img src="doc/img/azure-cosmosdb-spring-logo.png" width="95%">
+</p>
 
 ---
 
