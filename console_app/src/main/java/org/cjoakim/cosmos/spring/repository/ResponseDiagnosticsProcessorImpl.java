@@ -2,9 +2,9 @@ package org.cjoakim.cosmos.spring.repository;
 
 import com.azure.spring.data.cosmos.core.ResponseDiagnostics;
 import com.azure.spring.data.cosmos.core.ResponseDiagnosticsProcessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.cjoakim.cosmos.spring.AppConfiguration;
+import org.cjoakim.cosmos.spring.AppConstants;
 import org.springframework.lang.Nullable;
 
 /**
@@ -13,21 +13,25 @@ import org.springframework.lang.Nullable;
  */
 
 @Slf4j
-public class ResponseDiagnosticsProcessorImpl implements ResponseDiagnosticsProcessor {
+public class ResponseDiagnosticsProcessorImpl implements ResponseDiagnosticsProcessor, AppConstants {
 
     public static ResponseDiagnostics lastResponseDiagnostics;
+    private boolean verbose;
 
     public ResponseDiagnosticsProcessorImpl() {
         super();
-        log.warn("constructor");
+        verbose = AppConfiguration.booleanArg(VERBOSE_FLAG);
+        log.warn("constructor, verbose: " + verbose);
     }
 
     @Override
     public void processResponseDiagnostics(@Nullable ResponseDiagnostics responseDiagnostics) {
 
-        lastResponseDiagnostics = responseDiagnostics;  // capture the last diagnostics, for single-use demo purposes
+        lastResponseDiagnostics = responseDiagnostics;
         if (responseDiagnostics != null) {
-            log.debug("ResponseDiagnostics: " + responseDiagnostics);
+            if (verbose) {
+                log.debug("ResponseDiagnostics: " + responseDiagnostics);
+            }
         }
     }
 
