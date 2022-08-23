@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * Instances of this class are used for ad-hoc testing and development
- * of Data Access Object (CosmosDB Java SDK) functionality within the
- * (batch) DataCommandLineApp,
+ *
  *
  * Chris Joakim, Microsoft, August 2022
  */

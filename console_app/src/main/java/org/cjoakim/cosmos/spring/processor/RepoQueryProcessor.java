@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Instances of this class are used for ad-hoc testing and development
- * of CosmosDB Spring Data Repository functionality within the (batch)
- * DataCommandLineApp,
+ *
  *
  * Chris Joakim, Microsoft, August 2022
  */

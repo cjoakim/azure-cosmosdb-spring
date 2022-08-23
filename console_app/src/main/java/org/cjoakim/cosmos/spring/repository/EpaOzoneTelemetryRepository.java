@@ -26,3 +26,26 @@ public interface EpaOzoneTelemetryRepository extends CosmosRepository<EpaOzoneTe
     long countAllDocuments();
 
 }
+
+//        {
+//        "id": "018d34ba-52c2-4edf-931a-3d22b2b937e4",
+//        "pk": "33.904039|-86.053867",
+//        "stateCode": "01",
+//        "countyCode": "055",
+//        "siteNum": "0011",
+//        "latitude": 33.904039,
+//        "longitude": -86.053867,
+//        "datum": "NAD83",
+//        "metric": "Ozone",
+//        "localDateTime": "2021-03-01 19:00",
+//        "gmtDateTime": "2021-03-02 01:00",
+//        "uom": "Parts per million",
+//        "observationCount": 7,
+//        "nullObservations": 1,
+//        "meanObservation": 0.03,
+//        "_rid": "gklzAKAAj3sOAAAAAAAAAA==",
+//        "_self": "dbs/gklzAA==/colls/gklzAKAAj3s=/docs/gklzAKAAj3sOAAAAAAAAAA==/",
+//        "_etag": "\"4c01dde8-0000-0100-0000-6304de220000\"",
+//        "_attachments": "attachments/",
+//        "_ts": 1661263394
+//        }

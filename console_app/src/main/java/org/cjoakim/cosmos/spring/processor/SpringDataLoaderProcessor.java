@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * An instance of this class is created and executed from the DataCommandLineApp
- * main class to load CosmosDB from the previously transformed data.
+ *
  *
  * Chris Joakim, Microsoft, August 2022
  */
@@ -133,10 +132,10 @@ public class SpringDataLoaderProcessor extends ConsoleAppProcessor implements Ap
             log.warn("elapsed ms:           " + elapsedMillis);
             log.warn("elapsed minutes:      " + elapsedMinutes);
             if (doWrites) {
-                log.warn("docs per minute:  " + ((double) documentsWritten) / elapsedMinutes);
+                log.warn("docs per minute:      " + ((double) documentsWritten) / elapsedMinutes);
             }
             else {
-                log.warn("docs per minute:  " + ((double) documentsProcessed) / elapsedMinutes);
+                log.warn("docs per minute:      " + ((double) documentsProcessed) / elapsedMinutes);
             }
         }
     }

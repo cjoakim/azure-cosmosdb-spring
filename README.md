@@ -10,6 +10,12 @@ Sample **Spring Boot** console and web applications with the **Azure CosmosDB SQ
 
 ---
 
+## Links
+
+- https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb
+- 
+---
+
 ## Interesting Datasets
 
 - https://docs.microsoft.com/en-us/azure/open-datasets/

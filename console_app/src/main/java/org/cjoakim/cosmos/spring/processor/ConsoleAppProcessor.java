@@ -3,8 +3,7 @@ package org.cjoakim.cosmos.spring.processor;
 import java.text.DecimalFormat;
 
 /**
- * Interface for "processor" classes created and invoked from the DataCommandLineApp
- * main class, a "console app"
+ *
  *
  * Chris Joakim, Microsoft, August 2022
  */
