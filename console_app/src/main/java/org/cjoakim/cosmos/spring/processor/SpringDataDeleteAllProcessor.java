@@ -1,24 +1,15 @@
 package org.cjoakim.cosmos.spring.processor;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
-import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
 import org.cjoakim.cosmos.spring.repository.EpaOzoneTelemetryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
-
 /**
- *
+ * This ConsoleAppProcessor is used to delete all documents from a given container.
  *
  * Chris Joakim, Microsoft, August 2022
  */
@@ -32,7 +23,7 @@ public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements
     private String container;
 
     @Autowired
-    private EpaOzoneTelemetryRepository epaOzoneTelemetryRepository = null;
+    private EpaOzoneTelemetryRepository telemetryRepository = null;
 
     public void process() throws Exception {
 
@@ -54,14 +45,14 @@ public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements
 
         while (continueToProcess) {
             loopNumber++;
-            documentCount = epaOzoneTelemetryRepository.countAllDocuments();
+            documentCount = telemetryRepository.countAllDocuments();
             log.warn("loop number " + loopNumber + " document count: " + formattedCount(documentCount));
             if (loopNumber == 1) {
                 initialDocumentCount = documentCount;
             }
             if (documentCount > 0) {
                 try {
-                    epaOzoneTelemetryRepository.deleteAll();
+                    telemetryRepository.deleteAll();
                 }
                 catch(Throwable t) {
                     exceptionCount++;
@@ -75,7 +66,7 @@ public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements
                 continueToProcess = false;
             }
         }
-        documentCount = epaOzoneTelemetryRepository.countAllDocuments();
+        documentCount = telemetryRepository.countAllDocuments();
         long docsDeletedCount = initialDocumentCount - documentCount;
 
         long elapsedMillis = System.currentTimeMillis() - startMillis;

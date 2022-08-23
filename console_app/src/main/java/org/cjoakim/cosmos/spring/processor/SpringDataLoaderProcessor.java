@@ -24,7 +24,8 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- *
+ * This ConsoleAppProcessor is used to load the EPA Ozone Telemetry data into CosmosDB
+ * with the Spring Data SDK.
  *
  * Chris Joakim, Microsoft, August 2022
  */
@@ -42,7 +43,7 @@ public class SpringDataLoaderProcessor extends ConsoleAppProcessor implements Ap
     private String loadType;
 
     @Autowired
-    private EpaOzoneTelemetryRepository epaOzoneTelemetryRepository = null;
+    private EpaOzoneTelemetryRepository telemetryRepository = null;
 
     private boolean doWrites = false;
     private boolean verbose  = false;
@@ -88,7 +89,7 @@ public class SpringDataLoaderProcessor extends ConsoleAppProcessor implements Ap
                             event = mapper.readValue(line.trim(), EpaOzoneTelemetryEvent.class);
                             event.setId(UUID.randomUUID().toString());
                             if (doWrites) {
-                                Object result = epaOzoneTelemetryRepository.save(event);
+                                Object result = telemetryRepository.save(event);
                                 documentsWritten++;
                                 if (verbose || (documentsWritten % 1000) == 0) {
                                     log.warn("document number " + documentsWritten + " result: " + result + "  " + result.getClass().getName());

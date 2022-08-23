@@ -8,10 +8,14 @@ import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
 
 import java.io.*;
-import java.text.DecimalFormat;
 
 /**
+ * This ConsoleAppProcessor parses the raw downloaded 'data/epa/8hour_44201_2021/8hour_44201_2021.csv'
+ * and parses it into JSON file 'data/epa/8hour_44201_2021/ozone_telemetry.json' containing n-number
+ * of documents, where n is a command-line argument.
  *
+ * The output JSON file can then be used as input to load CosmosDB, with either Spring Data
+ * or the native CosmosDB SDK.
  *
  * Chris Joakim, Microsoft, August 2022
  */

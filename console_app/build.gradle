@@ -57,6 +57,12 @@ task loadEpaOzoneDataWithSpringData(type: JavaExec) {
     args 'load_epa_ozone_data_with_spring_data', '0', '50000', 'epa_ozone_telemetry', 'data/epa/8hour_44201_2021/ozone_telemetry.json', '--do-writes', '--xverbose'
 }
 
+task queryTelemetryWithSpringData(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.spring.App'
+    args 'query_telemetry_with_spring_data', ''
+}
+
 task deleteAllDocumentsWithSpringData(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.spring.App'

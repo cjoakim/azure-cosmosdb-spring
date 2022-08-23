@@ -23,7 +23,7 @@ public class App implements CommandLineRunner, AppConstants {
     //@Autowired private TripleRepository tripleRepository;
 
     @Autowired private SpringDataLoaderProcessor springDataLoader;
-
+    @Autowired private SpringDataQueryProcessor springDataQueryProcessor;
     @Autowired private SpringDataDeleteAllProcessor springDataDeleteProcessor;
     @Autowired private RepoQueryProcessor repoQueryProcessor;
     @Autowired private DaoQueryProcessor daoQueryProcessor;
@@ -49,16 +49,22 @@ public class App implements CommandLineRunner, AppConstants {
                     epaOzoneDataProcessor.setPartitionKeyStrategy(args[3]);
                     epaOzoneDataProcessor.process();
                     break;
-                case "delete_all_documents_with_spring_data":
-                    springDataDeleteProcessor.setContainer(args[1]);
-                    springDataDeleteProcessor.process();
-                    break;
+
                 case "load_epa_ozone_data_with_spring_data":
                     springDataLoader.setSkipCount(Long.parseLong(args[1]));
                     springDataLoader.setMaxRecords(Long.parseLong(args[2]));
                     springDataLoader.setLoadType(args[3]);
                     springDataLoader.setInfile(args[4]);
                     springDataLoader.process();
+                    break;
+                    //
+                case "query_telemetry_with_spring_data":
+                    //springDataDeleteProcessor.setContainer(args[1]);
+                    springDataQueryProcessor.process();
+                    break;
+                case "delete_all_documents_with_spring_data":
+                    springDataDeleteProcessor.setContainer(args[1]);
+                    springDataDeleteProcessor.process();
                     break;
                 case "load_epa_ozone_data_with_sdk_bulk_load":
                     // TODO - implement
