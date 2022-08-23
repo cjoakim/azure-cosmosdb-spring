@@ -3,7 +3,6 @@ package org.cjoakim.cosmos.spring.repository;
 import com.azure.spring.data.cosmos.repository.CosmosRepository;
 import com.azure.spring.data.cosmos.repository.Query;
 import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
-import org.cjoakim.cosmos.spring.model.Library;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
 
 @Component
 @Repository
-public interface EpaOzoneTelemetryRepository extends CosmosRepository<EpaOzoneTelemetryEvent, String> {
+public interface TelemetryRepository extends CosmosRepository<EpaOzoneTelemetryEvent, String> {
 
     Iterable<EpaOzoneTelemetryEvent> findByStateCode(String stateCode);
 

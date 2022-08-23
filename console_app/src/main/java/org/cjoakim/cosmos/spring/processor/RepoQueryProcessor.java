@@ -2,17 +2,11 @@ package org.cjoakim.cosmos.spring.processor;
 
 import com.azure.spring.data.cosmos.core.CosmosTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.io.FileUtil;
-import org.cjoakim.cosmos.spring.model.Library;
-import org.cjoakim.cosmos.spring.model.Triple;
 import org.cjoakim.cosmos.spring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -24,13 +18,13 @@ import java.util.Iterator;
 @Slf4j
 public class RepoQueryProcessor extends ConsoleAppProcessor implements AppConstants {
 
-    private EpaOzoneTelemetryRepository epaOzoneTelemetryRepository = null;
+    private TelemetryRepository epaOzoneTelemetryRepository = null;
 
     private CosmosTemplate template;
 
     @Autowired
     public RepoQueryProcessor(
-            EpaOzoneTelemetryRepository epaOzoneTelemRepo,
+            TelemetryRepository epaOzoneTelemRepo,
             CosmosTemplate t) {
         super();
         this.epaOzoneTelemetryRepository = epaOzoneTelemRepo;

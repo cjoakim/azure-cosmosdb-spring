@@ -1,13 +1,9 @@
 package org.cjoakim.cosmos.spring.processor;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.spring.App;
 import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.model.*;
@@ -16,11 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -43,7 +37,7 @@ public class SpringDataLoaderProcessor extends ConsoleAppProcessor implements Ap
     private String loadType;
 
     @Autowired
-    private EpaOzoneTelemetryRepository telemetryRepository = null;
+    private TelemetryRepository telemetryRepository = null;
 
     private boolean doWrites = false;
     private boolean verbose  = false;

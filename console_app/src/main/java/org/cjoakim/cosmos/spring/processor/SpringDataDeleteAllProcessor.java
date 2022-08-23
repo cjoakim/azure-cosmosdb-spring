@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConstants;
-import org.cjoakim.cosmos.spring.repository.EpaOzoneTelemetryRepository;
+import org.cjoakim.cosmos.spring.repository.TelemetryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +29,7 @@ public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements
     boolean continueToProcess = true;
 
     @Autowired
-    private EpaOzoneTelemetryRepository telemetryRepository = null;
+    private TelemetryRepository telemetryRepository = null;
 
     public void process() throws Exception {
 

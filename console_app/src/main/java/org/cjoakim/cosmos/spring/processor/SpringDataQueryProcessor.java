@@ -8,17 +8,12 @@ import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.io.FileUtil;
 import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
-import org.cjoakim.cosmos.spring.repository.EpaOzoneTelemetryRepository;
+import org.cjoakim.cosmos.spring.repository.TelemetryRepository;
 import org.cjoakim.cosmos.spring.repository.ResponseDiagnosticsProcessorImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * This ConsoleAppProcessor executes various Spring Data SDK queries vs the telemetry
@@ -39,7 +34,7 @@ public class SpringDataQueryProcessor extends ConsoleAppProcessor implements App
     private ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
-    private EpaOzoneTelemetryRepository telemetryRepository = null;
+    private TelemetryRepository telemetryRepository = null;
 
     public void process() throws Exception {
 
