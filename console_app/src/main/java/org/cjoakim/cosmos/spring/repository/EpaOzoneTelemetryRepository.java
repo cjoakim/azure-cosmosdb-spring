@@ -4,6 +4,7 @@ import com.azure.spring.data.cosmos.repository.CosmosRepository;
 import com.azure.spring.data.cosmos.repository.Query;
 import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
 import org.cjoakim.cosmos.spring.model.Library;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +18,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EpaOzoneTelemetryRepository extends CosmosRepository<EpaOzoneTelemetryEvent, String> {
 
-//    Iterable<Library> findByPkAndTenant(String pk, String tenant);
-//
-//    Iterable<Library> findByPkAndTenantAndDoctype(String pk, String tenant, String doctype);
+    Iterable<EpaOzoneTelemetryEvent> findByStateCode(String stateCode);
+
+    Iterable<EpaOzoneTelemetryEvent> findByStateCodeAndCountyCode(String stateCode, String countyCode);
+
+    @Query( "select c.id, c.pk, c.stateCode, c.countyCode, c.siteNum, c.observationCount, c.nullObservations " +
+            "from  c " +
+            "where c.observationCount >= @observationCount " +
+            "and   c.nullObservations >= @nullObservations")
+    Iterable<EpaOzoneTelemetryEvent>  findByObservationCount(
+            @Param("observationCount") long observationCount,
+            @Param("nullObservations") long nullObservations);
 
 
     @Query("select value count(1) from c")

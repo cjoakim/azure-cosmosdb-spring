@@ -21,6 +21,12 @@ import org.springframework.stereotype.Component;
 public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements AppConstants {
 
     private String container;
+    long startMillis = System.currentTimeMillis();
+    long loopNumber = 0;
+    long documentCount = -1;
+    long exceptionCount = -1;
+    long initialDocumentCount = 0;
+    boolean continueToProcess = true;
 
     @Autowired
     private EpaOzoneTelemetryRepository telemetryRepository = null;
@@ -36,12 +42,7 @@ public class SpringDataDeleteAllProcessor extends ConsoleAppProcessor implements
 
     private void deleteTelemetry() throws Exception {
         log.warn("deleteTelemetry...");
-        long startMillis = System.currentTimeMillis();
-        long loopNumber = 0;
-        long documentCount = -1;
-        long exceptionCount = -1;
-        long initialDocumentCount = 0;
-        boolean continueToProcess = true;
+        startMillis = System.currentTimeMillis();
 
         while (continueToProcess) {
             loopNumber++;

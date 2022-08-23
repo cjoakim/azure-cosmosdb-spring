@@ -59,7 +59,7 @@ public class App implements CommandLineRunner, AppConstants {
                     break;
                     //
                 case "query_telemetry_with_spring_data":
-                    //springDataDeleteProcessor.setContainer(args[1]);
+                    springDataQueryProcessor.setQueryTypes(args[1]);
                     springDataQueryProcessor.process();
                     break;
                 case "delete_all_documents_with_spring_data":
