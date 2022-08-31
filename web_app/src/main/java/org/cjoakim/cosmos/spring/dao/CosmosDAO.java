@@ -4,18 +4,14 @@ import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
 import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.CosmosDatabase;
-import com.azure.cosmos.models.CosmosQueryRequestOptions;
-import com.azure.cosmos.models.FeedResponse;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
 
 /**
  * This is a Data Access Object (DAO) which uses the CosmosDB SDK for Java
  * rather than Spring Data.  This class isn't used in the web application,
  * it is just for ad-hoc and exploratory purposes.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Slf4j

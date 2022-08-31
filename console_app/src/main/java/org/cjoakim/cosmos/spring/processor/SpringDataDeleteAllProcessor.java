@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * This ConsoleAppProcessor is used to delete all documents from a given container.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Component

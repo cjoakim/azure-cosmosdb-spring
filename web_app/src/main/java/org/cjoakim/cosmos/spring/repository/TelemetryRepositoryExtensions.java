@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * See class TelemetryRepositoryExtensionsImpl in this package, which implements this interface.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 public interface TelemetryRepositoryExtensions {
 

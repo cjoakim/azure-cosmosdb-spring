@@ -4,14 +4,15 @@ import com.azure.spring.data.cosmos.core.CosmosTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.io.FileUtil;
-import org.cjoakim.cosmos.spring.repository.*;
+import org.cjoakim.cosmos.spring.repository.ResponseDiagnosticsProcessorImpl;
+import org.cjoakim.cosmos.spring.repository.TelemetryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
  *
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Component

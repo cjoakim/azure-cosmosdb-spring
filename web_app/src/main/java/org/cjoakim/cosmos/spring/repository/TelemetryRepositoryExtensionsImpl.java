@@ -18,7 +18,7 @@ import java.util.Collections;
  * more of the power of the CosmosDB SQL syntax, by using "Criteria" objects and an Autowired "CosmosTemplate"
  * object.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Slf4j

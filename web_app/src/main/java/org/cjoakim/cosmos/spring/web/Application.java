@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * This is the entry-point to this Spring Web Application, as denoted by the
  * @SpringBootApplication annotation.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @SpringBootApplication

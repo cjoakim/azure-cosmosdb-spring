@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * This class is a Spring Boot @Configuration class that also provides configuration
  * values for the Spring Data CosmosDB repositories.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Configuration
@@ -109,19 +109,9 @@ public class AppConfiguration extends AbstractCosmosConfiguration implements App
     // Application Config:
 
 
-    public static String getTenant() {
-
-        return flagArg(TENANT_FLAG, DEFAULT_TENANT);
-    }
-
     public static String getCosmosContainerName() {
 
-        return flagArg(CONTAINER_FLAG, DEFAULT_CONTAINER);
-    }
-
-    public static String getLineOfBusiness() {
-
-        return flagArg(LOB_FLAG, LOB_NPM_LIBRARIES);
+        return flagArg(CONTAINER_FLAG, TELEMETRY_CONTAINER_NAME);
     }
 
     // CosmosDB Spring Data Config below:

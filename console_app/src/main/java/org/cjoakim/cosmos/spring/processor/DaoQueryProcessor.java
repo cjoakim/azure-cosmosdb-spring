@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  *
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Component
@@ -34,14 +34,16 @@ public class DaoQueryProcessor extends ConsoleAppProcessor implements AppConstan
     public void process() throws Exception {
 
         try {
-            String tenant = AppConfiguration.getTenant();
-            log.warn("process, tenant: " + tenant);
-            log.warn("process, uri:    " + uri);
+            // TODO
 
-            dao.initialize(uri, key, dbName);
-
-            StringBuffer sb = new StringBuffer();
-            sb.append("select * from c where c.doctype = 'triple'");
+//            String tenant = AppConfiguration.getTenant();
+//            log.warn("process, tenant: " + tenant);
+//            log.warn("process, uri:    " + uri);
+//
+//            dao.initialize(uri, key, dbName);
+//
+//            StringBuffer sb = new StringBuffer();
+//            sb.append("select * from c where c.doctype = 'triple'");
 
         }
         finally {

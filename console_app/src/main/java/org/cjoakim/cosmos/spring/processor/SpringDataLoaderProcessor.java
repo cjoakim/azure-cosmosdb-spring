@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
-import org.cjoakim.cosmos.spring.model.*;
-import org.cjoakim.cosmos.spring.repository.*;
+import org.cjoakim.cosmos.spring.model.TelemetryEvent;
+import org.cjoakim.cosmos.spring.repository.TelemetryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +21,7 @@ import java.util.UUID;
  * This ConsoleAppProcessor is used to load the EPA Ozone Telemetry data into CosmosDB
  * with the Spring Data SDK.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Component

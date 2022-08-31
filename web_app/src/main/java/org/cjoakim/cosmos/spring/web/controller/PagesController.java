@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
  * This controller is used to serve several static pages for this app,
  * implemented as Thymeleaf templates.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Slf4j

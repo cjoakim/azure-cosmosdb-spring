@@ -17,7 +17,7 @@ import java.io.*;
  * The output JSON file can then be used as input to load CosmosDB, with either Spring Data
  * or the native CosmosDB SDK.
  *
- * Chris Joakim, Microsoft, August 2022
+ * Chris Joakim, Microsoft, September 2022
  */
 
 @Slf4j
