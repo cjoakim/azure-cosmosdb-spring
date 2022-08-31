@@ -15,11 +15,16 @@ import org.springframework.stereotype.Repository;
 
 @Component
 @Repository
-public interface TelemetryRepository extends CosmosRepository<EpaOzoneTelemetryEvent, String> {
+public interface TelemetryRepository extends
+        CosmosRepository<EpaOzoneTelemetryEvent, String>,
+        TelemetryRepositoryExtensions {
 
     Iterable<EpaOzoneTelemetryEvent> findByStateCode(String stateCode);
 
     Iterable<EpaOzoneTelemetryEvent> findByStateCodeAndCountyCode(String stateCode, String countyCode);
+
+    @Query("select value count(1) from c")
+    long countAllDocuments();
 
     @Query( "select c.id, c.pk, c.stateCode, c.countyCode, c.siteNum, c.observationCount, c.nullObservations " +
             "from  c " +
@@ -30,8 +35,7 @@ public interface TelemetryRepository extends CosmosRepository<EpaOzoneTelemetryE
             @Param("nullObservations") long nullObservations);
 
 
-    @Query("select value count(1) from c")
-    long countAllDocuments();
+
 
 }
 
