@@ -2,8 +2,6 @@ package org.cjoakim.cosmos.spring.io;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.spring.model.Author;
-import org.cjoakim.cosmos.spring.model.Library;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,18 +64,6 @@ public class FileUtil {
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(Paths.get(infile).toFile(), Map.class);
-    }
-
-    public Library readLibrary(String infile) throws Exception {
-
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(Paths.get(infile).toFile(), Library.class);
-    }
-
-    public Author readAuthor(String infile) throws Exception {
-
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(Paths.get(infile).toFile(), Author.class);
     }
 
     public void writeJson(Object obj, String outfile, boolean pretty, boolean verbose) throws Exception {
