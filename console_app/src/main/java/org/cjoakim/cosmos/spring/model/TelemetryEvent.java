@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.cjoakim.cosmos.spring.AppConstants;
 
 /**
  *
@@ -18,8 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Container(containerName="telemetry")
-public class EpaOzoneTelemetryEvent {
+@Container(containerName=AppConstants.TELEMETRY_CONTAINER_NAME)
+public class TelemetryEvent implements AppConstants {
 
     private String id;  // CosmosDB document ID
     private String pk;  // CosmosDB partition key

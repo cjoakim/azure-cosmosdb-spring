@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.io.FileUtil;
-import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
+import org.cjoakim.cosmos.spring.model.TelemetryEvent;
 import org.cjoakim.cosmos.spring.repository.TelemetryRepository;
 import org.cjoakim.cosmos.spring.repository.ResponseDiagnosticsProcessorImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,31 +48,44 @@ public class SpringDataQueryProcessor extends ConsoleAppProcessor implements App
             log.warn("telemetery repository, count: " + count);
             log.warn("count - last_request_charge: " + ResponseDiagnosticsProcessorImpl.getLastRequestCharge());
         }
+
         if (queryTypes.contains(" findByStateCode ")) {
-            Iterable<EpaOzoneTelemetryEvent> iterable =
+            Iterable<TelemetryEvent> iterable =
                     telemetryRepository.findByStateCode("01");
             log.warn("findByStateCode - last_request_charge: " + ResponseDiagnosticsProcessorImpl.getLastRequestCharge());
             saveResults(iterable, "findByStateCode");
         }
+
         if (queryTypes.contains(" findByStateCodeAndCountyCode ")) {
-            Iterable<EpaOzoneTelemetryEvent> iterable =
+            Iterable<TelemetryEvent> iterable =
                     telemetryRepository.findByStateCodeAndCountyCode("01", "003");
             log.warn("findByStateCodeAndCountyCode - last_request_charge: " + ResponseDiagnosticsProcessorImpl.getLastRequestCharge());
             saveResults(iterable, "findByStateCodeAndCountyCode");
         }
+
         if (queryTypes.contains(" findByObservationCount ")) {
-            Iterable<EpaOzoneTelemetryEvent> iterable =
+            Iterable<TelemetryEvent> iterable =
                     telemetryRepository.findByObservationCount(1, 1);
             log.warn("findByObservationCount - last_request_charge: " + ResponseDiagnosticsProcessorImpl.getLastRequestCharge());
             saveResults(iterable, "findByObservationCount");
         }
+
+        if (queryTypes.contains(" findByStateCodeAndSiteNumbers ")) {
+            ArrayList<String> siteNumbers = new ArrayList<String>();
+            siteNumbers.add("0010");
+            siteNumbers.add("0011");
+            Iterable<TelemetryEvent> iterable =
+                    telemetryRepository.findByStateCodeAndSiteNumbers("01", siteNumbers);
+            log.warn("findByStateCodeAndSiteNumbers - last_request_charge: " + ResponseDiagnosticsProcessorImpl.getLastRequestCharge());
+            saveResults(iterable, "findByStateCodeAndSiteNumbers");
+        }
     }
 
-    private void saveResults(Iterable<EpaOzoneTelemetryEvent> iterable, String queryName) {
+    private void saveResults(Iterable<TelemetryEvent> iterable, String queryName) {
 
         String outfile = "tmp/" + queryName + ".json";
         try {
-            ArrayList<EpaOzoneTelemetryEvent> events = new ArrayList<EpaOzoneTelemetryEvent>();
+            ArrayList<TelemetryEvent> events = new ArrayList<TelemetryEvent>();
             iterable.forEach(doc -> { events.add(doc); });
             fileUtil.writeJson(events, outfile, true, true);
         }

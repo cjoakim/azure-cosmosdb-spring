@@ -2,13 +2,13 @@ package org.cjoakim.cosmos.spring.repository;
 
 import com.azure.spring.data.cosmos.repository.CosmosRepository;
 import com.azure.spring.data.cosmos.repository.Query;
-import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
+import org.cjoakim.cosmos.spring.model.TelemetryEvent;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data Repository for class EpaOzoneTelemetryEvent.
+ * Spring Data Repository for class TelemetryEvent.
  *
  * Chris Joakim, Microsoft, August 2022
  */
@@ -16,12 +16,12 @@ import org.springframework.stereotype.Repository;
 @Component
 @Repository
 public interface TelemetryRepository extends
-        CosmosRepository<EpaOzoneTelemetryEvent, String>,
+        CosmosRepository<TelemetryEvent, String>,
         TelemetryRepositoryExtensions {
 
-    Iterable<EpaOzoneTelemetryEvent> findByStateCode(String stateCode);
+    Iterable<TelemetryEvent> findByStateCode(String stateCode);
 
-    Iterable<EpaOzoneTelemetryEvent> findByStateCodeAndCountyCode(String stateCode, String countyCode);
+    Iterable<TelemetryEvent> findByStateCodeAndCountyCode(String stateCode, String countyCode);
 
     @Query("select value count(1) from c")
     long countAllDocuments();
@@ -30,7 +30,7 @@ public interface TelemetryRepository extends
             "from  c " +
             "where c.observationCount >= @observationCount " +
             "and   c.nullObservations >= @nullObservations")
-    Iterable<EpaOzoneTelemetryEvent>  findByObservationCount(
+    Iterable<TelemetryEvent>  findByObservationCount(
             @Param("observationCount") long observationCount,
             @Param("nullObservations") long nullObservations);
 

@@ -60,7 +60,7 @@ task loadEpaOzoneDataWithSpringData(type: JavaExec) {
 task queryTelemetryWithSpringData(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.spring.App'
-    args 'query_telemetry_with_spring_data', ' count findByStateCode findByStateCodeAndCountyCode findByObservationCount '
+    args 'query_telemetry_with_spring_data', ' count findByStateCode findByStateCodeAndCountyCode findByObservationCount findByStateCodeAndSiteNumbers '
 }
 
 task deleteAllDocumentsWithSpringData(type: JavaExec) {

@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.cjoakim.cosmos.spring.AppConstants;
-import org.cjoakim.cosmos.spring.model.EpaOzoneTelemetryEvent;
+import org.cjoakim.cosmos.spring.model.TelemetryEvent;
 
 import java.io.*;
 
@@ -54,7 +54,7 @@ public class EpaRawOzoneDataProcessor extends ConsoleAppProcessor implements App
                         if ((outputDocCount % 10000) == 0) {
                             log.warn("processing document number " + formattedCount(outputDocCount));
                         }
-                        EpaOzoneTelemetryEvent event = recordToEvent(record, recordNum);
+                        TelemetryEvent event = recordToEvent(record, recordNum);
                         if (event != null) {
                             writer.write(event.asJson(false));
                             writer.newLine();
@@ -90,10 +90,10 @@ public class EpaRawOzoneDataProcessor extends ConsoleAppProcessor implements App
         }
     }
 
-    private EpaOzoneTelemetryEvent recordToEvent(CSVRecord record, long recordNumber) {
+    private TelemetryEvent recordToEvent(CSVRecord record, long recordNumber) {
 
         try {
-            EpaOzoneTelemetryEvent event = new EpaOzoneTelemetryEvent();
+            TelemetryEvent event = new TelemetryEvent();
             event.setStateCode(record.get(0));
             event.setCountyCode(record.get(1));
             event.setSiteNum(record.get(2));
@@ -120,7 +120,7 @@ public class EpaRawOzoneDataProcessor extends ConsoleAppProcessor implements App
         }
     }
 
-    private void setPartitionKey(EpaOzoneTelemetryEvent event) {
+    private void setPartitionKey(TelemetryEvent event) {
 
         if (event != null) {
             event.setPk(event.getGmtDateTime());  // 'gmtDateTime' is the default pk attribute

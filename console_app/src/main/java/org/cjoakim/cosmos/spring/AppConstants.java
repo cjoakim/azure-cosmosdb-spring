@@ -21,6 +21,9 @@ public interface AppConstants {
 
     public static final String DELETE_ALL      = "--delete-all";
 
+    // Container Names:
+    public static final String TELEMETRY_CONTAINER_NAME = "telemetry";
+
     // Document Types
     public static final String DOCTYPE_LIBRARY     = "library";
     public static final String DOCTYPE_AUTHOR      = "author";
