@@ -7,7 +7,6 @@ import com.azure.cosmos.CosmosDatabase;
 import com.azure.cosmos.models.CosmosQueryRequestOptions;
 import com.azure.cosmos.models.FeedResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.spring.model.Triple;
 
 import java.util.ArrayList;
 
