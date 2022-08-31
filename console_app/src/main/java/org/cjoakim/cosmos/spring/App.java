@@ -42,6 +42,7 @@ public class App implements CommandLineRunner, AppConstants {
 
         try {
             switch (processType) {
+
                 case "transform_raw_epa_ozone_data":
                     EpaRawOzoneDataProcessor epaOzoneDataProcessor = new EpaRawOzoneDataProcessor();
                     epaOzoneDataProcessor.setSkipCount(Long.parseLong(args[1]));
@@ -50,7 +51,7 @@ public class App implements CommandLineRunner, AppConstants {
                     epaOzoneDataProcessor.process();
                     break;
 
-                case "load_epa_ozone_data_with_spring_data":
+                case "load_telemetry_with_spring_data":
                     springDataLoader.setSkipCount(Long.parseLong(args[1]));
                     springDataLoader.setMaxRecords(Long.parseLong(args[2]));
                     springDataLoader.setLoadType(args[3]);
@@ -67,7 +68,8 @@ public class App implements CommandLineRunner, AppConstants {
                     springDataDeleteProcessor.setContainer(args[1]);
                     springDataDeleteProcessor.process();
                     break;
-                case "load_epa_ozone_data_with_sdk_bulk_load":
+
+                case "load_telemetry_data_with_sdk_bulk_load":
                     // TODO - implement
                     //springDataLoader.setSkipCount(Long.parseLong(args[1]));
                     //springDataLoader.setMaxRecords(Long.parseLong(args[2]));
