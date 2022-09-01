@@ -4,8 +4,13 @@ import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
 import com.azure.cosmos.CosmosContainer;
 import com.azure.cosmos.CosmosDatabase;
+import com.azure.cosmos.models.CosmosQueryRequestOptions;
+import com.azure.cosmos.models.FeedResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConfiguration;
+import org.cjoakim.cosmos.spring.model.TelemetryEvent;
+
+import java.util.ArrayList;
 
 /**
  * This is a Data Access Object (DAO) which uses the CosmosDB SDK for Java
@@ -67,7 +72,7 @@ public class CosmosSdkDao {
         }
     }
 
-    private void setCurrentContainer(String c) {
+    public void setCurrentContainer(String c) {
 
         if (this.currentContainerName.equalsIgnoreCase(c)) {
             return;
@@ -78,4 +83,35 @@ public class CosmosSdkDao {
         }
     }
 
+    public ArrayList<TelemetryEvent> getTelemetry() {
+
+        ArrayList<TelemetryEvent> documents = new ArrayList<TelemetryEvent>();
+        String sql = "select * from c";
+        int    pageSize = 100;
+        int    currentPageNumber = 1;
+        int    documentNumber = 0;
+        String continuationToken = null;
+        double requestCharge = 0.0;
+        CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
+
+        // First iteration (continuationToken = null): Receive a batch of query response pages
+        // Subsequent iterations (continuationToken != null): Receive subsequent batch of query response pages, with continuationToken indicating where the previous iteration left off
+        do {
+            Iterable<FeedResponse<TelemetryEvent>> feedResponseIterator =
+                    container.queryItems(sql, queryOptions, TelemetryEvent.class)
+                            .iterableByPage(continuationToken, pageSize);
+
+            for (FeedResponse<TelemetryEvent> page : feedResponseIterator) {
+                for (TelemetryEvent doc : page.getResults()) {
+                    documents.add(doc);
+                }
+                requestCharge += page.getRequestCharge();
+                continuationToken = page.getContinuationToken();
+                currentPageNumber++;
+            }
+        }
+        while (continuationToken != null);
+
+        return documents;
+    }
 }

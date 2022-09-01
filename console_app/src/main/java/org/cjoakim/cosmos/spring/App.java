@@ -79,6 +79,7 @@ public class App implements CommandLineRunner, AppConstants {
                     break;
 
                 case "query_telemetry_with_sdk":
+                    sdkDaoQueryProcessor.setContainer(args[1]);
                     sdkDaoQueryProcessor.process();
                     break;
 
