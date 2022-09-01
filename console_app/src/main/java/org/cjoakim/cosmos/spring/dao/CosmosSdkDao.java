@@ -9,6 +9,7 @@ import com.azure.cosmos.models.FeedResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.spring.AppConfiguration;
 import org.cjoakim.cosmos.spring.model.TelemetryEvent;
+import org.cjoakim.cosmos.spring.model.TelemetryQueryResults;
 
 import java.util.ArrayList;
 
@@ -83,19 +84,18 @@ public class CosmosSdkDao {
         }
     }
 
-    public ArrayList<TelemetryEvent> getTelemetry() {
+    public TelemetryQueryResults getAllTelemetry() {
 
-        ArrayList<TelemetryEvent> documents = new ArrayList<TelemetryEvent>();
         String sql = "select * from c";
         int    pageSize = 100;
-        int    currentPageNumber = 1;
-        int    documentNumber = 0;
         String continuationToken = null;
-        double requestCharge = 0.0;
         CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
 
-        // First iteration (continuationToken = null): Receive a batch of query response pages
-        // Subsequent iterations (continuationToken != null): Receive subsequent batch of query response pages, with continuationToken indicating where the previous iteration left off
+        TelemetryQueryResults resultsStruct = new TelemetryQueryResults();
+        resultsStruct.setSql(sql);
+
+        // Execute the SQL query and iterate the paginated result set,
+        // collecting the documents and total RU charge.
         do {
             Iterable<FeedResponse<TelemetryEvent>> feedResponseIterator =
                     container.queryItems(sql, queryOptions, TelemetryEvent.class)
@@ -103,15 +103,15 @@ public class CosmosSdkDao {
 
             for (FeedResponse<TelemetryEvent> page : feedResponseIterator) {
                 for (TelemetryEvent doc : page.getResults()) {
-                    documents.add(doc);
+                    resultsStruct.addDocument(doc);
                 }
-                requestCharge += page.getRequestCharge();
+                resultsStruct.addRequestCharge(page.getRequestCharge());
+                resultsStruct.incrementPageCount();
                 continuationToken = page.getContinuationToken();
-                currentPageNumber++;
             }
         }
         while (continuationToken != null);
 
-        return documents;
+        return resultsStruct;
     }
 }

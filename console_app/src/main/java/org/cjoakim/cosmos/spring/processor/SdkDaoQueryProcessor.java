@@ -8,6 +8,7 @@ import org.cjoakim.cosmos.spring.AppConstants;
 import org.cjoakim.cosmos.spring.dao.CosmosSdkDao;
 import org.cjoakim.cosmos.spring.io.FileUtil;
 import org.cjoakim.cosmos.spring.model.TelemetryEvent;
+import org.cjoakim.cosmos.spring.model.TelemetryQueryResults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -42,9 +43,9 @@ public class SdkDaoQueryProcessor extends ConsoleAppProcessor implements AppCons
             dao.initialize(uri, key, dbName, verbose);
             dao.setCurrentContainer(container);
 
-            ArrayList<TelemetryEvent> docs = dao.getTelemetry();
-            log.warn("docs count: " + docs.size());
-            saveTelemetryDocs(docs, "sdkTelemetry");
+            TelemetryQueryResults resultsStruct = dao.getAllTelemetry();
+            log.warn("all_telemetry docs count: " + resultsStruct.getDocumentCount());
+            saveResults(resultsStruct, "sdkTelemetry");
 
         }
         finally {
@@ -52,11 +53,11 @@ public class SdkDaoQueryProcessor extends ConsoleAppProcessor implements AppCons
         }
     }
 
-    private void saveTelemetryDocs(ArrayList<TelemetryEvent> docs, String queryName) {
+    private void saveResults(TelemetryQueryResults resultsStruct, String queryName) {
 
         String outfile = "tmp/" + queryName + ".json";
         try {
-            fileUtil.writeJson(docs, outfile, true, true);
+            fileUtil.writeJson(resultsStruct, outfile, true, true);
         }
         catch (Throwable t) {
             t.printStackTrace();
