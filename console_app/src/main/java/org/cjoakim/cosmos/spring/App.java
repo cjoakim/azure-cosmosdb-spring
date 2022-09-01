@@ -26,7 +26,7 @@ public class App implements CommandLineRunner, AppConstants {
     @Autowired private SpringDataQueryProcessor springDataQueryProcessor;
     @Autowired private SpringDataDeleteAllProcessor springDataDeleteProcessor;
     @Autowired private RepoQueryProcessor repoQueryProcessor;
-    @Autowired private DaoQueryProcessor daoQueryProcessor;
+    @Autowired private SdkDaoQueryProcessor sdkDaoQueryProcessor;
 
     public static void main(String[] args) {
         AppConfiguration.setCommandLineArgs(args);
@@ -78,14 +78,10 @@ public class App implements CommandLineRunner, AppConstants {
                     //springDataLoader.process();
                     break;
 
-
-
-                case "springdata_queries":
-                    repoQueryProcessor.process();
+                case "query_telemetry_with_sdk":
+                    sdkDaoQueryProcessor.process();
                     break;
-                case "dao_queries":
-                    daoQueryProcessor.process();
-                    break;
+
                 default:
                     log.error("unknown CLI process name: " + processType);
             }

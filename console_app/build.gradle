@@ -69,6 +69,12 @@ task deleteAllDocumentsWithSpringData(type: JavaExec) {
     args 'delete_all_documents_with_spring_data', 'telemetry'
 }
 
+task queryTelemetryWithSdk(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.cjoakim.cosmos.spring.App'
+    args 'query_telemetry_with_sdk', 'telemetry', '--verbose'
+}
+
 task loadEpaOzoneDataWithSdkBulkLoad(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.cjoakim.cosmos.spring.App'
